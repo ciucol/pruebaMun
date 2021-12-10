@@ -9,13 +9,7 @@ const updateBalance = async (body) => {
 const transfer = async (body) => {
   let transfer = JSON.parse(body)
 
-  let infoTransfer = {
-    senderId: transfer.senderId,
-    receiverId: transfer.receiverId,
-    amount: transfer.amount
-  }
-
-  return await store.transfer(infoTransfer)
+  return await store.transfer(transfer)
 }
 
 module.exports = {

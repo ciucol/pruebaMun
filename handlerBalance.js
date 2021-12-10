@@ -25,7 +25,7 @@ module.exports.transfer = async (event) => {
     statusCode: 201,
     body: JSON.stringify(
       {
-        message: 'info sendMoney',
+        message: res,
         input: event,
       },
       null,
