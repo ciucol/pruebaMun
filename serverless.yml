@@ -8,13 +8,34 @@ provider:
   lambdaHashingVersion: 20201221
 
 functions:
-  hello:
-    handler: handler.hello
+  newUser:
+    handler: handlerUsers.newUser
     events:
       - http:
-          path: hello
-          method: get
+          path: users
+          method: post
 
+  newOrder:
+    handler: handlerOders.newOrder
+    events:
+      - http:
+          path: orders
+          method: post
 
+  increaseBalance:
+    handler: handlerBalance.increaseBalance
+    events:
+      - http:
+          path: users/:id/increase-balance
+          method: post
+  
+  sendMoney:
+    handler: handlerBalance.sendMoney
+    events:
+      - http:
+          path: transfers
+          method: post
+  
+  
 plugins:
   - serverless-offline
