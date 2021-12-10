@@ -1,11 +1,13 @@
 'use strict';
+const controller = require("./components/users/controller")
 
 module.exports.newUser = async (event) => {
+  const res = await controller.newUser(event.body)
   return {
     statusCode: 201,
     body: JSON.stringify(
       {
-        message: 'info newUser',
+        message: res,
         input: event,
       },
       null,

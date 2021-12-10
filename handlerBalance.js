@@ -1,11 +1,14 @@
 'use strict';
+const controller = require('./components/balances/controller')
 
 module.exports.increaseBalance = async (event) => {
+
+
   return {
     statusCode: 201,
     body: JSON.stringify(
       {
-        message: 'info increaseBalance',
+        message: "res",
         input: event,
       },
       null,
@@ -17,7 +20,8 @@ module.exports.increaseBalance = async (event) => {
   // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
 };
 
-module.exports.sendMoney = async (event) => {
+module.exports.transfer = async (event) => {
+  const res = await controller.transfer(event.body)
   return {
     statusCode: 201,
     body: JSON.stringify(

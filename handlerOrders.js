@@ -1,11 +1,13 @@
 'use strict';
+const controller = require('./components/orders/controller')
 
 module.exports.newOrder = async (event) => {
+  const res = await controller.newOrder(event.body)
   return {
     statusCode: 201,
     body: JSON.stringify(
       {
-        message: 'info newOrder',
+        message: res,
         input: event,
       },
       null,

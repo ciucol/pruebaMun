@@ -16,7 +16,7 @@ functions:
           method: post
 
   newOrder:
-    handler: handlerOders.newOrder
+    handler: handlerOrders.newOrder
     events:
       - http:
           path: orders
@@ -26,11 +26,11 @@ functions:
     handler: handlerBalance.increaseBalance
     events:
       - http:
-          path: users/:id/increase-balance
+          path: increase-balance
           method: post
   
-  sendMoney:
-    handler: handlerBalance.sendMoney
+  transfer:
+    handler: handlerBalance.transfer
     events:
       - http:
           path: transfers
