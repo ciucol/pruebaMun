@@ -1,20 +1,43 @@
-const increaseBalance = (infoAmount) => {
+const { PrismaClient } = require('@prisma/client')
+
+const prisma = new PrismaClient()
+
+const updateBalance = async ({ userId, amount }) => {
   try {
-    return "Balance increased"
+    const user = await prisma.user.findUnique({
+      where: {
+        id: userId
+      }
+    })
+
+    const increase = user.balance + amount
+
+    const newBalance = await prisma.user.update({
+      where: {
+        id: userId
+      },
+      data: {
+        balance: increase
+      }
+    })
+
+    return newBalance
   } catch (error) {
-    throw new Error(error)
+    return error
+  } finally {
+    await prisma.$disconnect()
   }
 }
 
-const transfer = (infoAmount) => {
+const transfer = () => {
   try {
     return "Successful transfer"
   } catch (error) {
-    throw new Error(error)
+    return error
   }
 }
 
 module.exports = {
-  increaseBalance,
+  updateBalance,
   transfer
 }

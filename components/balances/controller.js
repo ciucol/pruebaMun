@@ -1,14 +1,9 @@
 const store = require('./store')
 
-const increaseBalance = async (body) => {
+const updateBalance = async (body) => {
   let amount = JSON.parse(body)
 
-  let infoAmount = {
-    userId: amount.userId,
-    amount: amount.amount
-  }
-
-  return await store.increaseBalance(infoAmount)
+  return await store.updateBalance(amount)
 }
 
 const transfer = async (body) => {
@@ -24,6 +19,6 @@ const transfer = async (body) => {
 }
 
 module.exports = {
-  increaseBalance,
+  updateBalance,
   transfer
 }

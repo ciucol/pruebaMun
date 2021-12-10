@@ -1,8 +1,24 @@
-const newUser = (infoUser) => {
+const { PrismaClient } = require('@prisma/client')
+
+const prisma = new PrismaClient()
+
+const newUser = async ({ name, lastname, email, password, amount }) => {
   try {
-    return "User created"
+    const user = await prisma.user.create({
+      data: {
+        name,
+        lastname,
+        email,
+        password,
+        balance: amount
+      }
+    })
+
+    return user
   } catch (error) {
-    throw new Error(error)
+    return (error.message)
+  } finally {
+    await prisma.$disconnect()
   }
 }
 

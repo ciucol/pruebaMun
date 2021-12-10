@@ -1,14 +1,13 @@
 'use strict';
 const controller = require('./components/balances/controller')
 
-module.exports.increaseBalance = async (event) => {
-
-
+module.exports.updateBalance = async (event) => {
+  const res = await controller.updateBalance(event.body)
   return {
     statusCode: 201,
     body: JSON.stringify(
       {
-        message: "res",
+        message: res,
         input: event,
       },
       null,

@@ -22,12 +22,12 @@ functions:
           path: orders
           method: post
 
-  increaseBalance:
-    handler: handlerBalance.increaseBalance
+  updateBalance:
+    handler: handlerBalance.updateBalance
     events:
       - http:
-          path: increase-balance
-          method: post
+          path: balances
+          method: put
   
   transfer:
     handler: handlerBalance.transfer
