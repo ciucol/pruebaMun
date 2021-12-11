@@ -8,6 +8,13 @@ provider:
   lambdaHashingVersion: 20201221
 
 functions:
+  getUsers:
+    handler: handlerUsers.getUsers
+    events:
+      - http:
+          path: users
+          method: get
+
   newUser:
     handler: handlerUsers.newUser
     events:
@@ -26,7 +33,7 @@ functions:
     handler: handlerBalance.updateBalance
     events:
       - http:
-          path: balances
+          path: users/{id}/balance
           method: put
   
   transfer:

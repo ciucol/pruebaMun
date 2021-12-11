@@ -2,7 +2,7 @@ const { PrismaClient } = require('@prisma/client')
 
 const prisma = new PrismaClient()
 
-const updateBalance = async ({ userId, amount }) => {
+const updateBalance = async ({ id: userId }, { amount }) => {
   try {
     const user = await prisma.user.findUnique({
       where: {
@@ -37,7 +37,7 @@ const transfer = async ({ senderId, receiverId, amount }) => {
       }
     })
 
-    if (sender.balance > amount) {
+    if (sender.balance >= amount) {
       const receiver = await prisma.user.findUnique({
         where: {
           id: receiverId

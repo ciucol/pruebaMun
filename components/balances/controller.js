@@ -1,9 +1,9 @@
 const store = require('./store')
 
-const updateBalance = async (body) => {
+const updateBalance = async (params, body) => {
   let amount = JSON.parse(body)
 
-  return await store.updateBalance(amount)
+  return await store.updateBalance(params, amount)
 }
 
 const transfer = async (body) => {

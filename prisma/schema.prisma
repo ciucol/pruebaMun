@@ -22,11 +22,11 @@ model User {
 }
 
 model Order {
-  id      Int    @id @default(autoincrement())
-  product Int
-  amount  Int
-  buyer   User   @relation(fields: [buyerId], references: [id])
-  buyerId String
+  id          Int    @id @default(autoincrement())
+  description String
+  amount      Int
+  buyer       User   @relation(fields: [buyerId], references: [id])
+  buyerId     String
 }
 
 model Transfer {

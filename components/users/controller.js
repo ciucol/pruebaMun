@@ -1,6 +1,8 @@
 const bcrypt = require('bcryptjs')
 const store = require('./store')
 
+const getUsers = async () => await store.getUsers()
+
 const newUser = async (body) => {
   let user = JSON.parse(body)
 
@@ -19,5 +21,6 @@ const newUser = async (body) => {
 }
 
 module.exports = {
+  getUsers,
   newUser
 }
