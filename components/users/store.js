@@ -10,7 +10,7 @@ const getUsers = async () => {
   } catch (error) {
     return error.message
   } finally {
-    await prisma.$disconnect
+    await prisma.$disconnect()
   }
 }
 

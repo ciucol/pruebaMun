@@ -1,3 +1,5 @@
+org: ciucol
+app: prueba-mun
 service: pruebamun
 
 frameworkVersion: '2'
@@ -22,6 +24,13 @@ functions:
           path: users
           method: post
 
+  getOrderByUser:
+    handler: handlerOrders.getOrderByUser
+    events:
+      - http:
+          path: orders/{id}
+          method: get
+  
   newOrder:
     handler: handlerOrders.newOrder
     events:

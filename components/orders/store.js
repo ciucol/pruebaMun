@@ -2,6 +2,25 @@ const { PrismaClient } = require('@prisma/client')
 
 const prisma = new PrismaClient()
 
+const getOrderByUser = async ({ id }) => {
+  try {
+    const orders = await prisma.user.findMany({
+      where: {
+        id
+      },
+      include: {
+        Order: true
+      }
+    })
+
+    return orders
+  } catch (error) {
+    return error
+  } finally {
+    await prisma.$disconnect()
+  }
+}
+
 const newOrder = async ({ userId, description, amount }) => {
   try {
     const user = await prisma.user.findUnique({
@@ -42,5 +61,6 @@ const newOrder = async ({ userId, description, amount }) => {
 }
 
 module.exports = {
+  getOrderByUser,
   newOrder
 }

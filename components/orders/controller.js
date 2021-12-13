@@ -1,5 +1,7 @@
 const store = require('./store')
 
+const getOrderByUser = async (params) => await store.getOrderByUser(params)
+
 const newOrder = async (body) => {
   let order = JSON.parse(body)
 
@@ -7,5 +9,6 @@ const newOrder = async (body) => {
 }
 
 module.exports = {
+  getOrderByUser,
   newOrder
 }
